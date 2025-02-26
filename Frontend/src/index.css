@@ -1,0 +1,161 @@
+body, ul, h3, h1, p {
+    margin: 0;
+}
+
+body {
+    height: 100%; /* Asegura que el body y el html ocupen toda la altura de la pantalla */
+    display: flex; /* Usamos flexbox para distribuir el contenido */
+    flex-direction: column; /* Alineamos los elementos en columna */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.18rem;
+    background-color: #333;
+    color: #fff;
+}
+
+/* header nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+/* .app{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+    border: 1px solid #222;
+    border-radius: 10px;
+    box-shadow: 0 0 25px #0009;
+    padding: 15px;
+}
+
+nav ul li{
+    transition: transform 0.3s ease;
+    margin: auto;
+}
+
+nav ul li:hover{
+    transform: scale(1.1);
+}
+
+nav ul li a {
+    /* margin-right: 20px; */
+    padding: 7px;
+    color: #fff;
+    text-decoration: none;
+    
+}
+
+nav ul li a:hover{
+    background-color: rgb(116, 116, 116);
+    border-radius: 5px;
+}
+
+/* -------------------------- */
+header > div {
+    background-color: #333;
+    width: 50%;
+    /* height: 180px; */
+    /* border: 1px solid yellow; */
+    border-radius: 10px;
+    box-shadow: 0 0 25px #0009;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#logo {
+    /* width: 3%; */
+    border: 1px solid #222;
+    /* border-radius: 50%; */
+    box-shadow: 0 0 20px #0009;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+#barra-busqueda {
+    height: 54px;
+    /* width: 85%; */
+    /* background-color: #FFD700; */
+    /* text-align: center;
+    line-height: 54px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#barra-busqueda form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid cyan; */
+    /* width: 50%; */
+}
+
+#boton-carrito {
+    /* height: 54px; */
+    width: 10%;
+    /* background-color: #333; */
+    border-radius: 10px;
+    box-shadow: 0 0 25px #0009;
+    text-align: center;
+    line-height: 54px;
+    font-size: 20px;
+}
+
+#barra-busqueda form label {
+    background-color: #24c016;
+    width: 100px;
+    height: 22px;
+    text-align: center;
+    line-height: 22px;
+    color: #000;
+}
+
+#barra-busqueda form input {
+    background-color: transparent;
+    border: 2px solid #222;
+    padding: 2px;
+    width: 50%;
+    color: white;
+    height: 20px;
+    margin: 0 2px 0 5px;    
+}
+
+#barra-busqueda form input[type="submit"] {
+    background-color: none;
+    padding: 2px;
+    width: 50px;
+    height: 28px;
+    margin: 0; 
+    border-radius: 20px;
+}
+
+/* --------------------------- */
+main {
+    /* height: 550px; */
+}
+
+/* --------------------------- */
+footer {
+    background-color: #333;
+    color: white;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    font-size: 22px;
+}

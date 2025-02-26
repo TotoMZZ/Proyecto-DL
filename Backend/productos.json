@@ -1,0 +1,44 @@
+[
+	{
+		"nombre": "Chair",
+		"precio": "817.00",
+		"stock": 111,
+		"marca": "Garden",
+		"categoria": "Fantastic Fresh Chips",
+		"descripcionCorta": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+		"descripcionLarga": "The Football Is Good For Training And Recreational Purposes",
+		"edadDesde": 5,
+		"edadHasta": 8,
+		"envio": false,
+		"foto": "https://loremflickr.com/640/480/nature",
+		"id": "5"
+	},
+	{
+		"nombre": "Shoes",
+		"precio": "907.00",
+		"stock": 43,
+		"marca": "Home",
+		"categoria": "Generic Bronze Pants",
+		"descripcionCorta": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+		"descripcionLarga": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+		"edadDesde": 17,
+		"edadHasta": 76,
+		"envio": false,
+		"foto": "https://loremflickr.com/640/480/people",
+		"id": "6"
+	},
+	{
+		"nombre": "we4",
+		"precio": 474,
+		"stock": 49,
+		"marca": "Jewelery",
+		"categoria": "Bespoke Rubber Fish",
+		"descripcionCorta": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+		"descripcionLarga": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+		"edadDesde": 27,
+		"edadHasta": 30,
+		"envio": false,
+		"foto": "https://loremflickr.com/640/480/sports",
+		"id": "7"
+	}
+]

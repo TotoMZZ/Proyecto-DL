@@ -1,0 +1,110 @@
+.carrito {
+    min-height: 600px;
+    padding: 20px;
+    background-color: #222;
+}
+
+.h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.carrito h2 {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 0.8em;
+    border-radius: 10px;
+
+    /* border: 1px solid white; */
+    box-shadow: 0px 0px 55px #0009;
+
+}
+
+.carrito .carrito__borrar__pedir {
+    margin: 15px auto;
+    display: block;
+
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 18px;
+
+}
+
+.carrito .carrito__borrar {
+    background-color: crimson;
+    color: white;
+    border: none;
+}
+
+.carrito .carrito__pedir {
+    background-color: green;
+    color: white;
+    border: none;
+}
+
+.carrito .centrar {
+    text-align: center;
+}
+
+/* --------- Maquetado de la tabla de carrito ------- */
+.carrito td, .carrito th {
+    border: 1px solid black;
+    width: 150px;
+    height: 30px;
+    padding: 20px;
+    background-color: #333;
+}
+
+.carrito table {
+    border-collapse: collapse;
+    margin: 5px auto;
+    color: white;
+}
+
+.carrito th {
+    text-transform: uppercase;
+    background-color: #111;
+    color:white;
+}
+
+
+/* ----------------------------------------------------- */
+.carrito table button[id^="btnBorrar-"] {
+    width: 90%;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 18px;
+    background-color: orangered;
+    color: white;
+    border: none;
+}
+
+.carrito table .btnIncDec {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-top: 5px;
+    margin-left: 5px;
+    border: none;
+}
+
+.carrito table button[id^="btnDecrementar-"] {
+    background-color: blue;
+    color: white;
+    border: none;
+}
+
+.carrito table button[id^="btnIncrementar-"] {
+    background-color: blue;
+    color: white;
+    border: none;
+}
+
+.carrito h2 {
+    text-align: center;
+}

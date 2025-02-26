@@ -1,0 +1,203 @@
+/* * {
+    box-sizing: border-box;
+} */
+
+.alta {
+    min-height: 600px;
+    padding: 20px;
+    background-color: #222;
+}
+
+.h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.alta h2 {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 0.5em;
+    border-radius: 10px;
+
+    /* border: 1px solid white; */
+    box-shadow: 0px 0px 55px #0009;
+}
+
+.form-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+}
+
+.group1,
+.group2 {
+    background-color: #333;
+    color: white;
+    margin-top: 30px;
+    padding: 20px;
+    width: 20%;
+    text-align: center;
+
+    /* border: 1px solid white; */
+    box-shadow: 0px 0px 55px #0009;
+
+    border-radius: 15px;
+
+    /* transition: transform 0.3s ease; */
+}
+
+.alta .input-group {
+    text-align: center;
+    padding: 3px;
+    /* border: 1px solid cyan; */
+}
+
+.alta label {
+    color: #fff;
+    text-transform: capitalize;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.alta label[for="envio"] {
+    display: inline-block;
+    margin: 10px 0;
+}
+
+.container-checkbox{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.checkbox{
+    
+    width: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    border-radius: 10px;
+
+}
+
+.alta button {
+    /* text-align: center; */
+    display: block;
+    margin: 15px auto;
+
+    height: 40px;
+    width: 10%;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.alta .btnAgregar {
+    background-color: rgba(0, 255, 0, 0.795);
+    color: #130f40;
+    border: none;
+    cursor: pointer;
+}
+
+.alta .btnAgregar:disabled {
+    opacity: 0.3;
+    cursor: auto;
+}
+
+.alta .btnActualizar {
+    background-color: gold;
+    color: #222;
+    border: none;
+    cursor: pointer;
+}
+
+.alta .btnActualizar:disabled {
+    opacity: 0.5;
+}
+
+.alta input {
+    width: 70%;
+    height: 30px;
+    /* border-radius: 5px; */
+    background-color: #444;
+    border: none;
+    border-left: 5px solid #222;
+    padding-left: 5px;
+    color: #fff;
+}
+
+.alta input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+
+/* ------------------------------ */
+.alta th, .alta td {
+    border: 1px solid #999;
+    width: 80px;
+    height: 30px;
+    padding: 10px;
+}
+
+.alta th {
+    text-transform: uppercase;    
+    background-color: #111;
+    color: white;
+    /* border: 1px solid white; */
+}
+
+.alta table {
+    border-collapse: collapse;
+    margin: 5px auto;
+    /* border: 1px solid white; */
+}
+
+.alta h2 {
+    text-align: center;
+}
+
+/* ------------------ */
+.alta table .borrar-editar {
+    width: 90%;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+}
+
+.alta table button[id^="btnBorrar-"] {
+    background-color: crimson;
+    color: white;
+}
+
+.alta table button[id^="btnBorrar-"]:disabled {
+    opacity: 0.5;
+    cursor: auto;
+
+}
+
+.alta table button[id^="btnEditar-"] {
+    background-color: gold;
+    color: #222;
+}
+
+.alta table button[id^="btnCancelar-"] {
+    background-color: #222;
+    color: gold;
+    font-size: 16px;
+}
+
+.alta table .centrar {
+    text-align: center;
+}
+
+.alta table {
+    color: white;
+    background-color: #333;
+}

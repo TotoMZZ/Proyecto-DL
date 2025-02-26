@@ -1,0 +1,41 @@
+.ObtenerFoto{
+    border: 3px solid #222;
+    width: 200px;
+    height: 30px;
+    margin: 10px auto;
+    /* margin-right: 0px; */
+    background-color: #444;
+    border-radius: 20px;
+}
+
+.ObtenerFoto #drop{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.ObtenerFoto input{
+    display: none;
+}
+
+.ObtenerFoto label{
+    color: #fff;
+    height: 100%;
+    cursor: pointer;
+    display: block;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+/* .ObtenerFoto .foto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+.ObtenerFoto img{
+    width: 30px;
+}

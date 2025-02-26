@@ -1,0 +1,62 @@
+h2{
+    color: #fff;
+}
+
+.inicio {
+    min-height: 600px;
+    background-color:#222;
+    text-align: center;
+    padding: 25px;
+}
+
+.inicio section img {
+    width: 200px;
+    margin-bottom: 15px;
+}
+
+.inicio .section-cards-body {
+    display: flex;
+    /* flex-wrap: nowrap; */
+    flex-wrap: wrap;
+
+    justify-content: space-evenly;
+}
+
+.inicio section {
+    width: 350px;
+    padding: 15px;
+    background-color:#333;
+    color: white;
+    margin: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 55px #0009;
+}
+
+.inicio section h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-decoration: underline;
+}
+
+.inicio .section-cards-header h1 {
+    color: white;
+    margin-bottom: 40px;
+}
+
+.inicio .section-cards-body section p {
+    margin-bottom: 10px;
+}
+
+/* ------------------------------------- */
+.inicio section button[id^="btnComprar-"] {
+    margin: 30px auto 5px;
+
+    width: 150px;
+    height: 50px;
+    border-radius: 5px;
+    font-size: 20px;
+    border: none;
+    background-color: #6ab04c;
+    color: #120f40;
+    cursor: pointer;
+}
