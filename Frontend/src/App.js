@@ -10,9 +10,12 @@ import { Index as Nosotros } from './componentes/NOSOTROS/Index.js'
 import { Index as Otra } from './componentes/OTRA/Index.js'
 
 import { BrowserRouter, Route, Routes } from 'react-router';
+import { useSelector } from 'react-redux';
 
 
 function App() {
+  const cantidad = useSelector(state => state.cantidad)
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -27,7 +30,7 @@ function App() {
                 <input type="submit" value="Buscar" />
               </form>
             </div>
-            <div id="boton-carrito">C</div>
+            <div id="boton-carrito">C: {cantidad}</div>
           </div>
         </header>
 

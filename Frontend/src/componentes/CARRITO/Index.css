@@ -108,3 +108,8 @@
 .carrito h2 {
     text-align: center;
 }
+
+.carrito #wallet_container{
+    width: 15%;
+    margin: auto;
+}

@@ -16,7 +16,7 @@ class Controlador {
         }
     }
 
-    guardarPedido = async (req, res) => {
+    /* guardarPedido = async (req, res) => {
         try {
             const pedido = req.body
             const pedidoGuardado = await this.servicio.guardarPedidos(pedido)
@@ -25,6 +25,27 @@ class Controlador {
         catch (error) {
             res.status(500).json({ errMsg: error.message })
         }
+    } */
+
+    createPreference = async (req, res) => {
+        try {
+            const datos = req.body
+            const preferenceId = await this.servicio.createPreference(datos)
+            res.json(preferenceId)
+        }
+        catch (error) {
+            res.status(500).json({ errMsg: error.message })
+        }
+    }
+
+    feedback = async (req, res) => {
+        const result = req.query
+        //console.log(result)
+        const urlRetorno = await this.servicio.feedback(result)
+        
+        //res.json({result})
+        res.redirect(urlRetorno)
+        
     }
 }
 

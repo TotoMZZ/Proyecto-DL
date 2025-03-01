@@ -23,7 +23,7 @@ export function Index() {
     const [editarID, setEditarID] = useState(null)
 
     useEffect(() => {
-        console.log('Componente Alta (montado)')
+        //console.log('Componente Alta (montado)')
 
         async function pedir() {
             const productos = await servicioProductos.getAll()
@@ -34,7 +34,7 @@ export function Index() {
         //escribirCampoFoto('hola!!!')
 
         return () => {
-            console.log('Componente Alta (desmontado)')
+            //console.log('Componente Alta (desmontado)')
         }
     }, [])
 
@@ -42,7 +42,7 @@ export function Index() {
     async function agregar(e) {
         e.preventDefault()
 
-        console.log('agregar', producto)
+        //console.log('agregar', producto)
 
         if (editarID) {
             // guardamos el producto en el recurso remoto
@@ -74,7 +74,7 @@ export function Index() {
     // ------------------------------------------------------
     // control de los botones de borrar
     const borrar = async id => {
-        console.log('borrar', id)
+        //console.log('borrar', id)
 
         //if (window.confirm(`¿Está seguro de borrar el producto de id ${id}?`)) {
         if (window.confirm(`¿Está seguro de borrar el producto de nombre "${productos.find(p => p.id === id)?.nombre}"?`)) {
@@ -92,7 +92,7 @@ export function Index() {
     // ------------------------------------------------------
     // control de los botones de edición
     const editar = id => {
-        console.log('editar', id)
+        //console.log('editar', id)
 
         setEditarID(id)
 
@@ -103,7 +103,7 @@ export function Index() {
     // ------------------------------------------------------
     // control de los botones de cancelar
     const cancelar = () => {
-        console.log('cancelar')
+        //console.log('cancelar')
 
         setEditarID(null)
 
@@ -140,7 +140,7 @@ export function Index() {
                 <h2>Alta de Productos</h2>
             </div>
             <form className="alta-form" onSubmit={agregar}>
-                <div class="form-group">
+                <div className="form-group">
                     <div className="group1">
                         {/* <!-- campo nombre --> */}
                         <div className="input-group">

@@ -4,7 +4,7 @@ import Servicio from '../servicio/upload.js'
 class Controlador {
     constructor() {
         this.servicio = new Servicio()
-    }
+    } 
 
     obtenerPedidos = async (req, res) => {
         try {

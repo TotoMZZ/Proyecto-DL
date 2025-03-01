@@ -3,14 +3,29 @@ import './Index.css'
 
 import servicioProductos from '../../servicios/productos.js'
 import { useStateLocalStorage } from '../../Hooks/useStateLocalStorage.js'
+import { useDispatch } from 'react-redux'
+import { accionSetCantidad } from '../../state/actions.js'
 
 export function Index() {
     const [productos, setProductos] = useState([])
     //const [carrito, setCarrito] = useState([])
     const [carrito, setCarrito] = useStateLocalStorage('carrito', [])
 
+    const dispatch = useDispatch()
+
+    // -------------------------------------------------------------------------------------
+    // Efecto para actualizar la cantidad de productos en el carrito de forma global (redux)
+    useEffect( () => {
+        //console.log(carrito.length)
+        const cantidad = carrito.length
+        console.log('--------------------------------')
+        console.log('1. DISPATCH -> Inicio', cantidad)
+        dispatch(accionSetCantidad(cantidad))
+    },[carrito, dispatch])
+    // -------------------------------------------------------------------------------------
+
     useEffect(() => {
-        console.log('Componente Inicio (montado)')
+        //console.log('Componente Inicio (montado)')
 
         async function pedir() {
             const productos = await servicioProductos.getAll()
@@ -20,13 +35,11 @@ export function Index() {
         pedir()
 
         return () => {
-            console.log('Componente Inicio (desmontado)')
+            //console.log('Componente Inicio (desmontado)')
         }
     }, [])
 
-    /* useEffect( () => {
-        console.log(carrito)
-    },[carrito]) */
+
 
     function agregar(producto) {
         //console.log('agregar', producto)

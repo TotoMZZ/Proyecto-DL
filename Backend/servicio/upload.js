@@ -11,7 +11,7 @@ class Servicio {
     subirArchivoFTP = async file => {
         //await new Promise(r => setTimeout(r, 2000))
         //return `http://localhost:${config.PORT}/uploads/${file.filename}`
-
+ 
         const client = new Client()
         client.ftp.verbose = false
 
