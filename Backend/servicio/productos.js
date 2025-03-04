@@ -2,6 +2,8 @@ import ModelFactory from "../modelo/DAOs/productos/productosFactory.js"
 
 import config from "../config.js"
 
+import validar from "./validaciones/producto.js"
+
 class Servicio {
 
     constructor() {
@@ -20,6 +22,8 @@ class Servicio {
     }
 
     guardarProducto = async producto => {
+        const error = validar(producto)
+        if(error) throw new Error(`Error de formato en campos del producto: ${error.details[0].message}`)
         const productoGuardado = await this.model.guardarProducto(producto)
         return productoGuardado
     }

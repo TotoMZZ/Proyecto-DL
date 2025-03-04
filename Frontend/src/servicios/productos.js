@@ -8,16 +8,18 @@ import axios from "axios"
 
 
 //const url = 'https://6626b1bfb625bf088c06652e.mockapi.io/api/productos/'
-const url = 'http://localhost:8080/api/productos/'
+const url = process.env.NODE_ENV === 'production'
+            ? '/api/productos/'                         // en producción
+            : `http://localhost:${process.env.REACT_APP_PORT_SRV_DEV}/api/productos/`   // en desarrollo
 
 
 //https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Proxy
 //https://refactoring.guru/es/design-patterns/proxy
 export const proxyProducto = producto => {
-    //console.log(producto)
+    ////console.log(producto)
     const handler = {
         get(target, prop) {
-            if(prop === 'id') prop = '_id'
+            if (prop === 'id') prop = '_id'
             return target[prop]
         }
     }
@@ -25,7 +27,7 @@ export const proxyProducto = producto => {
 }
 
 const eliminarPropiedad = (obj, prop) => {
-    const objClon = {...obj}
+    const objClon = { ...obj }
     delete objClon[prop]
     return objClon
 }
@@ -34,18 +36,18 @@ const eliminarPropiedad = (obj, prop) => {
 //const getAll = async () => (await axios.get(url)).data
 /* const getAll = async () => {
     const productos = (await axios.get(url)).data
-    console.log(productos)
+    //console.log(productos)
     return productos
 } */
 /* const getAll = async () => {
     const productos = (await axios.get(url)).data
-    console.log(productos)
+    //console.log(productos)
     return productos.map(producto => proxyProducto(producto))
 } */
 const getAll = async () => (await axios.get(url)).data.map(producto => proxyProducto(producto))
 const guardar = async prod => proxyProducto((await axios.post(url, prod)).data)
-const actualizar = async (id, prod) => proxyProducto((await axios.put(url+id, eliminarPropiedad(prod, '_id'))).data)
-const eliminar = async id => proxyProducto((await axios.delete(url+id)).data)
+const actualizar = async (id, prod) => proxyProducto((await axios.put(url + id, eliminarPropiedad(prod, '_id'))).data)
+const eliminar = async id => proxyProducto((await axios.delete(url + id)).data)
 
 /* const getAll = async () => {
     const prods = await fetch(url).then(r => r.json())

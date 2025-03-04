@@ -3,6 +3,9 @@ import './Index.css'
 import servicioProductos from '../../servicios/productos.js'
 import { ObtenerFoto } from './ObtenerFoto.js'
 
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
 export function Index() {
     const prodClear = {
         nombre: '',
@@ -22,19 +25,27 @@ export function Index() {
     const [producto, setProducto] = useState(prodClear)
     const [editarID, setEditarID] = useState(null)
 
+    /* -------------- Control del menu modal -------------- */
+    const [show, setShow] = useState(false);
+    const [IDBorrar, setIDBorrar] = useState(null);
+
+    const cerrarModalBorrarProducto = () => { setIDBorrar(null); setShow(false) }
+    const mostrarModalBorrarProducto = id => { setIDBorrar(id); setShow(true) }
+    /* ---------------------------------------------------- */
+
     useEffect(() => {
-        //console.log('Componente Alta (montado)')
+        ////console.log('Componente Alta (montado)')
 
         async function pedir() {
             const productos = await servicioProductos.getAll()
-            //console.log(productos)
+            ////console.log(productos)
             setProductos(productos)
         }
         pedir()
         //escribirCampoFoto('hola!!!')
 
         return () => {
-            //console.log('Componente Alta (desmontado)')
+            ////console.log('Componente Alta (desmontado)')
         }
     }, [])
 
@@ -42,12 +53,12 @@ export function Index() {
     async function agregar(e) {
         e.preventDefault()
 
-        //console.log('agregar', producto)
+        ////console.log('agregar', producto)
 
         if (editarID) {
             // guardamos el producto en el recurso remoto
             const productActualizado = await servicioProductos.actualizar(editarID, producto)
-            //console.log(productActualizado)
+            ////console.log(productActualizado)
 
             // actualización del producto en el recurso local
             const productosClon = [...productos]
@@ -74,19 +85,37 @@ export function Index() {
     // ------------------------------------------------------
     // control de los botones de borrar
     const borrar = async id => {
-        //console.log('borrar', id)
+
+        mostrarModalBorrarProducto(id)
+
+        ////console.log('borrar', id)
 
         //if (window.confirm(`¿Está seguro de borrar el producto de id ${id}?`)) {
-        if (window.confirm(`¿Está seguro de borrar el producto de nombre "${productos.find(p => p.id === id)?.nombre}"?`)) {
-            // borramos el producto en el recurso remoto
-            const productoBorrado = await servicioProductos.eliminar(id)
+        /* if (window.confirm(`¿Está seguro de borrar el producto de nombre "${productos.find(p => p.id === id)?.nombre}"?`)) { */
+        // borramos el producto en el recurso remoto
+        /* const productoBorrado = await servicioProductos.eliminar(id) */
 
-            // borramos el producto en el recurso local
-            const productosClon = [...productos]
-            const index = productosClon.findIndex(p => p.id === productoBorrado.id)
-            productosClon.splice(index, 1)
-            setProductos(productosClon)
-        }
+        // borramos el producto en el recurso local
+        /* const productosClon = [...productos]
+        const index = productosClon.findIndex(p => p.id === productoBorrado.id)
+        productosClon.splice(index, 1)
+        setProductos(productosClon) */
+
+    }
+
+    const goBorrar = async () => {
+        const id = IDBorrar
+
+        // borramos el producto en el recurso remoto
+        const productoBorrado = await servicioProductos.eliminar(id)
+
+        // borramos el producto en el recurso s
+        const productosClon = [...productos]
+        const index = productosClon.findIndex(p => p.id === productoBorrado.id)
+        productosClon.splice(index, 1)
+        setProductos(productosClon)
+
+        cerrarModalBorrarProducto()
     }
 
     // ------------------------------------------------------
@@ -112,7 +141,7 @@ export function Index() {
     }
 
     function formularioValido() {
-        const { nombre, precio, stock, marca, categoria, descripcionCorta, descripcionLarga, edadDesde, edadHasta} = producto
+        const { nombre, precio, stock, marca, categoria, descripcionCorta, descripcionLarga, edadDesde, edadHasta } = producto
 
         return (
             nombre &&
@@ -129,7 +158,7 @@ export function Index() {
 
 
     const escribirCampoFoto = url => {
-        const productoClon = { ...producto}
+        const productoClon = { ...producto }
         productoClon.foto = url
         setProducto(productoClon)
     }
@@ -139,11 +168,37 @@ export function Index() {
             <div className="h2">
                 <h2>Alta de Productos</h2>
             </div>
+
+            <>
+                {/* <Button variant="primary" onClick={handleShow}>
+                    Launch demo modal
+                </Button> */}
+
+                <Modal show={show} onHide={cerrarModalBorrarProducto}>
+                    <Modal.Header closeButton>
+                        <Modal.Title><h3>Borrar Producto</h3></Modal.Title>
+                    </Modal.Header>
+
+                    <Modal.Body>
+                        ¿Está seguro de borrar el producto de nombre "{productos.find(p => p.id === IDBorrar)?.nombre}"?
+                    </Modal.Body>
+
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={cerrarModalBorrarProducto}>
+                            Cancelar
+                        </Button>
+                        <Button variant="primary" onClick={goBorrar}>
+                            Aceptar
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+            </>
+
             <form className="alta-form" onSubmit={agregar}>
                 <div className="form-group">
                     <div className="group1">
                         {/* <!-- campo nombre --> */}
-                        <div className="input-group">
+                        <div className="mi-input-group">
                             <label htmlFor="nombre">nombre</label>
                             <input id="nombre" type="text" name="nombre" value={producto.nombre} onChange={
                                 e => setProducto({ ...producto, nombre: e.target.value })
@@ -152,7 +207,7 @@ export function Index() {
                         </div>
 
                         {/* <!-- campo precio --> */}
-                        <div className="input-group">
+                        <div className="mi-input-group">
                             <label htmlFor="precio">precio</label>
                             <input id="precio" type="number" name="precio" value={producto.precio} onChange={
                                 e => setProducto({ ...producto, precio: e.target.value ? +e.target.value : '' })
@@ -161,7 +216,7 @@ export function Index() {
                         </div>
 
                         {/* <!-- campo stock --> */}
-                        <div className="input-group">
+                        <div className="mi-input-group">
                             <label htmlFor="stock">stock</label>
                             <input id="stock" type="number" name="stock" value={producto.stock} onChange={
                                 e => setProducto({ ...producto, stock: e.target.value ? parseInt(e.target.value) : '' })
@@ -170,7 +225,7 @@ export function Index() {
                         </div>
 
                         {/* <!-- campo marca --> */}
-                        <div className="input-group">
+                        <div className="mi-input-group">
                             <label htmlFor="marca">marca</label>
                             <input id="marca" type="text" name="marca" value={producto.marca} onChange={
                                 e => setProducto({ ...producto, marca: e.target.value })
@@ -179,7 +234,7 @@ export function Index() {
                         </div>
 
                         {/* <!-- campo categoría --> */}
-                        <div className="input-group">
+                        <div className="mi-input-group">
                             <label htmlFor="categoria">categoría</label>
                             <input id="categoria" type="text" name="categoria" value={producto.categoria} onChange={
                                 e => setProducto({ ...producto, categoria: e.target.value })
@@ -190,7 +245,7 @@ export function Index() {
 
                     <div className="group2">
                         {/* <!-- campo detalles --> */}
-                        <div className="input-group">
+                        <div className="mi-input-group">
                             <label htmlFor="descripcionCorta">descripcion corta</label>
                             <input id="descripcionCorta" type="text" name="descripcionCorta" value={producto.descripcionCorta} onChange={
                                 e => setProducto({ ...producto, descripcionCorta: e.target.value })
@@ -198,7 +253,7 @@ export function Index() {
                             <div className="error-detail"></div>
                         </div>
 
-                        <div className="input-group">
+                        <div className="mi-input-group">
                             <label htmlFor="descripcionLarga">descripcion larga</label>
                             <input id="descripcionLarga" type="text" name="descripcionLarga" value={producto.descripcionLarga} onChange={
                                 e => setProducto({ ...producto, descripcionLarga: e.target.value })
@@ -206,7 +261,7 @@ export function Index() {
                             <div className="error-detail"></div>
                         </div>
 
-                        <div className="input-group">
+                        <div className="mi-input-group">
                             <label htmlFor="edadDesde">edad desde</label>
                             <input id="edadDesde" type="number" name="edadDesde" value={producto.edadDesde} onChange={
                                 e => setProducto({ ...producto, edadDesde: e.target.value })
@@ -214,7 +269,7 @@ export function Index() {
                             <div className="error-detail"></div>
                         </div>
 
-                        <div className="input-group">
+                        <div className="mi-input-group">
                             <label htmlFor="edadHasta">edad hasta</label>
                             <input id="edadHasta" type="number" name="edadHasta" value={producto.edadHasta} onChange={
                                 e => setProducto({ ...producto, edadHasta: e.target.value })
@@ -223,21 +278,21 @@ export function Index() {
                         </div>
 
                         {/* <!-- campo foto --> */}
-                        <div className="input-group">
+                        <div className="mi-input-group">
                             <label htmlFor="foto">foto</label>
                             <input id="foto" type="text" name="foto" value={producto.foto} onChange={
                                 e => setProducto({ ...producto, foto: e.target.value })
                             } />
                             {/* Zona de obtencion de la foto del producto */}
-                            <ObtenerFoto escribirCampoFoto={escribirCampoFoto}/>
-                            
+                            <ObtenerFoto escribirCampoFoto={escribirCampoFoto} />
+
                             <div className="error-detail"></div>
                         </div>
                     </div>
                 </div>
                 {/* <!-- campo envío --> */}
                 <div className="container-checkbox">
-                    <div className="input-group checkbox">
+                    <div className="mi-input-group checkbox">
                         <input id="envio" type="checkbox" name="envio" checked={producto.envio} onChange={
                             e => setProducto({ ...producto, envio: e.target.checked })
                         } />

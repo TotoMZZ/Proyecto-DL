@@ -1,7 +1,10 @@
 import axios from "axios"
 
 //const url = 'https://6626b1bfb625bf088c06652e.mockapi.io/api/pedidos/'
-const url = 'http://localhost:8080/api/pedidos/'
+//const url = 'http://localhost:8080/api/pedidos/'
+const url = process.env.NODE_ENV === 'production'
+            ? '/api/pedidos/'                         // en producción
+            : `http://localhost:${process.env.REACT_APP_PORT_SRV_DEV}/api/pedidos/`   // en desarrollo
 
 
 

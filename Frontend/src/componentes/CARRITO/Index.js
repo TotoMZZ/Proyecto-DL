@@ -21,26 +21,26 @@ export function Index() {
 
     // -------------------------------------------------------------------------------------
     // Efecto para actualizar la cantidad de productos en el carrito de forma global (redux)
-    useEffect( () => {
-        //console.log(carrito.length)
+    useEffect(() => {
+        ////console.log(carrito.length)
         const cantidad = carrito.length
-        console.log('--------------------------------')
-        console.log('1. DISPATCH -> Inicio', cantidad)
+        //console.log('--------------------------------')
+        //console.log('1. DISPATCH -> Inicio', cantidad)
         dispatch(accionSetCantidad(cantidad))
-    },[carrito, dispatch])
+    }, [carrito, dispatch])
     // -------------------------------------------------------------------------------------
 
     const navigate = useNavigate()
 
     const recibirDatosPago = async () => {
-        const parameters = new URL(window.location.href)
-        //console.log(parameters)
+        const parameters = new URL(window.location.href.replace(/#\//g,''))
+        ////console.log(parameters)
 
         const compra = {}
         compra.payment_id = parameters.searchParams.get('payment_id') || 'null'
         compra.status = parameters.searchParams.get('status') || 'null'
         compra.merchant_order_id = parameters.searchParams.get('merchant_order_id') || 'null'
-        //console.log(compra)
+        ////console.log(compra)
 
         if (compra.status !== 'null') {
             if (compra.status !== compraStatus.status) {
@@ -62,15 +62,15 @@ export function Index() {
     const recibirDatosPagoCb = useCallback(recibirDatosPago, [recibirDatosPago])
 
     useEffect(() => {
-        //console.log('useEffect carrito')
+        ////console.log('useEffect carrito')
 
         recibirDatosPagoCb()
     }, [recibirDatosPagoCb])
 
-    //console.log(...carrito)
+    ////console.log(...carrito)
 
     function decrementarItem(id) {
-        //console.log('decrementarItem', id)
+        ////console.log('decrementarItem', id)
 
         const carritoClon = [...carrito]
         const producto = carritoClon.find(p => p.id === id)
@@ -83,7 +83,7 @@ export function Index() {
     }
 
     function incrementarItem(id) {
-        //console.log('incrementarItem', id)
+        ////console.log('incrementarItem', id)
 
         const carritoClon = [...carrito]
         const producto = carritoClon.find(p => p.id === id)
@@ -97,7 +97,7 @@ export function Index() {
     }
 
     function borrarItem(id) {
-        //console.log('borrarItem', id)
+        ////console.log('borrarItem', id)
 
         if (window.confirm(`¿Está seguro de borrar el producto del carrito de nombre "${carrito.find(p => p.id === id)?.nombre}"?`)) {
             const carritoClon = [...carrito]
@@ -110,7 +110,7 @@ export function Index() {
     }
 
     function borrarCarrito() {
-        //console.log('borrarCarrito')
+        ////console.log('borrarCarrito')
 
         if (window.confirm(`¿Está seguro de borrar todo el carrito?`)) {
             setCarrito([])
@@ -120,13 +120,13 @@ export function Index() {
     }
 
     /* async function generarPedido() {
-        //console.log('generarPedido')
+        ////console.log('generarPedido')
 
         const pedido = { pedido: carrito }
 
-        //console.log('Enviar pedido...')
+        ////console.log('Enviar pedido...')
         await servicioCarrito.enviar(pedido)
-        //console.log('Pedido recibido!')
+        ////console.log('Pedido recibido!')
 
         setCarrito([])
     } */
@@ -145,11 +145,11 @@ export function Index() {
     }
 
     const onReady = () => {
-        //console.log('onReady')
+        ////console.log('onReady')
     }
 
     const onError = () => {
-        //console.log('onError')
+        ////console.log('onError')
     }
 
     const onSubmit = () => {

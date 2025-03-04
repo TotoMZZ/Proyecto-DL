@@ -4,6 +4,7 @@ import express from 'express'
 import RouterProductos from './router/productos.js'
 import RouterPedidos from './router/pedidos.js'
 import RouterUpload from './router/upload.js'
+import RouterUsuarios from './router/usuarios.js'
 
 
 import config from './config.js'
@@ -25,6 +26,7 @@ class Server {
         app.use('/api/productos', new RouterProductos().config())
         app.use('/api/pedidos', new RouterPedidos().config())
         app.use('/api/upload', new RouterUpload().config())
+        app.use('/api/usuarios', new RouterUsuarios().config())
 
         //------------ Listen del servidor Express ------------
         const PORT = config.PORT

@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit"
-import { carritoReducer } from "./reducers.js"
+import { appReducer } from "./reducers.js"
 
 
 // ---------------------- Redux ------------------------
@@ -7,9 +7,11 @@ import { carritoReducer } from "./reducers.js"
 // Instalación: npm i redux react-redux @reduxjs/toolkit
 // -----------------------------------------------------
 export const store = configureStore({
-    reducer: carritoReducer,
+    reducer: appReducer,
     preloadedState: {
-        cantidad: 0
+        cantidad: 0,
+        login: JSON.parse(localStorage.getItem('login')) || false,
+        usuarioLogueado: JSON.parse(localStorage.getItem('usuario')) || {}
     },
     //Redux DevTools: https://chromewebstore.google.com/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd
     devTools: true

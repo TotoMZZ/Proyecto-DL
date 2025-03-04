@@ -1,1 +1,3 @@
 export const SET_CANTIDAD = 'SET_CANTIDAD'
+export const LOGIN = 'LOGIN'
+export const USUARIO_LOGUEADO = 'USUARIO_LOGUEADO'

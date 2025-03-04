@@ -108,12 +108,12 @@ header > div {
 
 #boton-carrito {
     /* height: 54px; */
-    width: 10%;
+    width: 5%;
     /* background-color: #333; */
     border-radius: 10px;
     box-shadow: 0 0 25px #0009;
     text-align: center;
-    line-height: 54px;
+    /* line-height: 54px; */
     font-size: 20px;
 }
 
@@ -132,15 +132,15 @@ header > div {
     padding: 2px;
     width: 50%;
     color: white;
-    height: 20px;
+    /* height: 20px; */
     margin: 0 2px 0 5px;    
 }
 
 #barra-busqueda form input[type="submit"] {
     background-color: none;
     padding: 2px;
-    width: 50px;
-    height: 28px;
+    /* width: 50px; */
+    /* height: 28px; */
     margin: 0; 
     border-radius: 20px;
 }
@@ -155,7 +155,33 @@ footer {
     background-color: #333;
     color: white;
     height: 100px;
-    text-align: center;
-    line-height: 100px;
+    /* text-align: center; */
+    /* line-height: 100px; */
     font-size: 22px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header #titulo {
+    background-color: black;
+    color: gold;
+    font-size: 30px;
+    display: block;
+    height: 80px;
+    text-align: center;
+    line-height: 80px;
+    width: 100%;
+}
+
+#boton-logout {
+    background-color:#da20b5;
+    /* width: 10%; */
+    height: 54px;
+    color: white;
+    text-align: center;
+    line-height: 54px;
+    font-size: 22px;
+    cursor: pointer;
 }

@@ -4,6 +4,7 @@ import config from "../config.js"
 
 import './pago.js'
 import { preference } from "./pago.js"
+import { enviarEmail } from "./email.js"
 
 class Servicio {
 
@@ -27,7 +28,7 @@ class Servicio {
             this.fyhPedido = datos.fyh
             const preferences = await preference.create(datos.prefItems)
             return preferences.id
-        } 
+        }
         catch (error) {
             console.log(`Error en CreatePreference: ${error.message}`)
         }
@@ -36,13 +37,25 @@ class Servicio {
     feedback = async result => {
         const { payment_id, status, merchant_order_id } = result
 
-        if(status == 'approved'){
+        if (status == 'approved') {
             const datos = { compra: result, pedido: this.carrito, fyhPedido: this.fyhPedido, fyhCompra: new Date().toLocaleString() }
             await this.model.guardarPedido(datos)
 
+            // ------------- envío por mail de proceso de pago -------------
+            try {
+                const info = await enviarEmail(`
+                    <h2>Detalles del pedido</h2>
+                    <pre>${JSON.stringify(datos, null, '\t')}</pre>
+                `)
+                console.log('[OK] envio mail:', info)
+            }
+            catch(error){
+                console.log('[ERROR] envio mail:', error.message)
+            }
+            // -------------------------------------------------------------
         }
 
-        return `http://localhost:3000/carrito?payment_id=${payment_id}&status=${status}&merchant_order_id=${merchant_order_id}`
+        return `http://localhost:3000/#/carrito?payment_id=${payment_id}&status=${status}&merchant_order_id=${merchant_order_id}`
     }
 
 }

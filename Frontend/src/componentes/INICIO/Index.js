@@ -15,34 +15,34 @@ export function Index() {
 
     // -------------------------------------------------------------------------------------
     // Efecto para actualizar la cantidad de productos en el carrito de forma global (redux)
-    useEffect( () => {
-        //console.log(carrito.length)
+    useEffect(() => {
+        ////console.log(carrito.length)
         const cantidad = carrito.length
-        console.log('--------------------------------')
-        console.log('1. DISPATCH -> Inicio', cantidad)
+        //console.log('--------------------------------')
+        //console.log('1. DISPATCH -> Inicio', cantidad)
         dispatch(accionSetCantidad(cantidad))
-    },[carrito, dispatch])
+    }, [carrito, dispatch])
     // -------------------------------------------------------------------------------------
 
     useEffect(() => {
-        //console.log('Componente Inicio (montado)')
+        ////console.log('Componente Inicio (montado)')
 
         async function pedir() {
             const productos = await servicioProductos.getAll()
-            //console.log(productos)
+            ////console.log(productos)
             setProductos(productos)
         }
         pedir()
 
         return () => {
-            //console.log('Componente Inicio (desmontado)')
+            ////console.log('Componente Inicio (desmontado)')
         }
     }, [])
 
 
 
     function agregar(producto) {
-        //console.log('agregar', producto)
+        ////console.log('agregar', producto)
 
         const carritoClon = [...carrito]
 

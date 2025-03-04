@@ -1,0 +1,51 @@
+.Login label {
+    text-transform: capitalize;
+    font-size: 20px;
+    margin: 0 auto;
+    display: block;
+    font-weight: bold;
+    text-align: center;
+}
+
+.Login input {
+    display: block;
+    width: 400px;
+    height: 40px;
+    margin: 5px auto;
+    font-size: 22px;
+    padding: 10px;
+    margin-bottom: 25px;
+    border: none;
+    outline: none;
+    box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.5);
+    border-radius: 5px;
+}
+
+.Login input[type="submit"] {
+    margin-top: 40px;
+    width: 120px;
+    height: 45px;
+    font-size: 20px;
+}
+
+.Login input[value="Login"] {
+    background-color: lightgreen;
+}
+
+.Login input[value="Register"] {
+    background-color: lightpink;
+}
+
+.Login input[type="button"] {
+    margin-top: 40px;
+    width: 200px;
+    height: 45px;
+    font-size: 20px;
+    background-color: gold;
+    margin-bottom: 50px;
+}
+
+.Login form {
+    margin-top: 50px;
+    height: 600px;
+}
