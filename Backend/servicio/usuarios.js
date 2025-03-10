@@ -30,6 +30,8 @@ class Servicio {
         const usuarioRegistrado = await this.model.guardarUsuario(credenciales)
         return usuarioRegistrado
     }
+
+    
 }
 
 export default Servicio

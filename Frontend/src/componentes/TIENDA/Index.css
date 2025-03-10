@@ -1,0 +1,64 @@
+.tienda{
+    /* height: auto; */
+}
+
+.section-cards-body{
+    display: flex;
+    justify-content: space-evenly;
+    /* padding-top: 100px; */
+    /* padding-bottom: 100px; */
+}
+
+section{
+    box-shadow: 0px 0px 2px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #F6F6F6;
+}
+
+section img{
+    display: flex;
+    align-items: center;
+    /* width: 80%; */
+}
+
+/* -------------------------------------------------------------------- */
+
+.categorias{
+    display: flex;
+    justify-content: center;
+    gap: 200px;
+    margin-top: 100px;
+}
+
+.flex{
+    border: 1px solid red;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* position: relative; */
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out; /* Aplica ambas transiciones */
+}
+
+.flex:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3) ;
+}
+
+.flex img{
+    width: 280px;
+    height: auto;
+    /* box-sizing: border-box; */
+    position: absolute;
+    z-index: -1
+    
+}
+
+.flex h2{
+    background-color: gray;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}

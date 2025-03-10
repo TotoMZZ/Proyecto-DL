@@ -10,15 +10,16 @@ export function Index() {
     const prodClear = {
         nombre: '',
         precio: '',
-        stock: '',
-        marca: '',
-        categoria: '',
-        descripcionCorta: '',
-        descripcionLarga: '',
-        edadDesde: '',
-        edadHasta: '',
+        /* stock: '', */
+        /* marca: '', */
+        /* categoria: '', */
+        descripcion: '',
+        /* descripcionCorta: '', */
+        /* descripcionLarga: '', */
+        /* edadDesde: '', */
+        /* edadHasta: '', */
         foto: '',
-        envio: false
+        /* envio: false */
     }
 
     const [productos, setProductos] = useState([])
@@ -141,18 +142,19 @@ export function Index() {
     }
 
     function formularioValido() {
-        const { nombre, precio, stock, marca, categoria, descripcionCorta, descripcionLarga, edadDesde, edadHasta } = producto
+        const { nombre, precio,/*  stock, */ /* marca, */ /* categoria, */ descripcion, /* descripcionCorta, */ /* descripcionLarga, */ /* edadDesde, */ /* edadHasta */ } = producto
 
         return (
             nombre &&
             precio &&
-            stock &&
-            marca &&
-            categoria &&
-            descripcionCorta &&
-            descripcionLarga &&
-            edadDesde &&
-            edadHasta
+            /* stock && */
+            /* marca && */
+            /* categoria && */
+            descripcion
+            /* descripcionCorta && */
+            /* descripcionLarga && */
+            /* edadDesde && */
+            /* edadHasta */
         )
     }
 
@@ -216,66 +218,84 @@ export function Index() {
                         </div>
 
                         {/* <!-- campo stock --> */}
-                        <div className="mi-input-group">
+                        {/* <div className="mi-input-group">
                             <label htmlFor="stock">stock</label>
                             <input id="stock" type="number" name="stock" value={producto.stock} onChange={
                                 e => setProducto({ ...producto, stock: e.target.value ? parseInt(e.target.value) : '' })
                             } />
                             <div className="error-detail"></div>
-                        </div>
+                        </div> */}
 
                         {/* <!-- campo marca --> */}
-                        <div className="mi-input-group">
+                        {/* <div className="mi-input-group">
                             <label htmlFor="marca">marca</label>
                             <input id="marca" type="text" name="marca" value={producto.marca} onChange={
                                 e => setProducto({ ...producto, marca: e.target.value })
                             } />
                             <div className="error-detail"></div>
-                        </div>
+                        </div> */}
 
                         {/* <!-- campo categoría --> */}
                         <div className="mi-input-group">
-                            <label htmlFor="categoria">categoría</label>
-                            <input id="categoria" type="text" name="categoria" value={producto.categoria} onChange={
-                                e => setProducto({ ...producto, categoria: e.target.value })
-                            } />
+                            <label htmlFor="categoria">Categoría</label>
+                            <select
+                                id="categoria"
+                                name="categoria"
+                                value={producto.categoria}
+                                onChange={e => setProducto({ ...producto, categoria: e.target.value })}
+                            >
+                                <option value="">Seleccionar categoría</option>
+                                <option value="e-book">E-Books</option>
+                                <option value="recetarios">Recetarios</option>
+                                <option value="cursos">Cursos</option>
+                                
+                            </select>
                             <div className="error-detail"></div>
                         </div>
+
                     </div>
 
                     <div className="group2">
                         {/* <!-- campo detalles --> */}
                         <div className="mi-input-group">
+                            <label htmlFor="descripcion">descripcion</label>
+                            <input id="descripcion" type="text" name="descripcion" value={producto.descripcion} onChange={
+                                e => setProducto({ ...producto, descripcion: e.target.value })
+                            } />
+                            <div className="error-detail"></div>
+                        </div>
+
+                        {/* <div className="mi-input-group">
                             <label htmlFor="descripcionCorta">descripcion corta</label>
                             <input id="descripcionCorta" type="text" name="descripcionCorta" value={producto.descripcionCorta} onChange={
                                 e => setProducto({ ...producto, descripcionCorta: e.target.value })
                             } />
                             <div className="error-detail"></div>
-                        </div>
+                        </div> */}
 
-                        <div className="mi-input-group">
+                        {/* <div className="mi-input-group">
                             <label htmlFor="descripcionLarga">descripcion larga</label>
                             <input id="descripcionLarga" type="text" name="descripcionLarga" value={producto.descripcionLarga} onChange={
                                 e => setProducto({ ...producto, descripcionLarga: e.target.value })
                             } />
                             <div className="error-detail"></div>
-                        </div>
+                        </div> */}
 
-                        <div className="mi-input-group">
+                        {/* <div className="mi-input-group">
                             <label htmlFor="edadDesde">edad desde</label>
                             <input id="edadDesde" type="number" name="edadDesde" value={producto.edadDesde} onChange={
                                 e => setProducto({ ...producto, edadDesde: e.target.value })
                             } />
                             <div className="error-detail"></div>
-                        </div>
+                        </div> */}
 
-                        <div className="mi-input-group">
+                        {/* <div className="mi-input-group">
                             <label htmlFor="edadHasta">edad hasta</label>
                             <input id="edadHasta" type="number" name="edadHasta" value={producto.edadHasta} onChange={
                                 e => setProducto({ ...producto, edadHasta: e.target.value })
                             } />
                             <div className="error-detail"></div>
-                        </div>
+                        </div> */}
 
                         {/* <!-- campo foto --> */}
                         <div className="mi-input-group">
@@ -291,14 +311,14 @@ export function Index() {
                     </div>
                 </div>
                 {/* <!-- campo envío --> */}
-                <div className="container-checkbox">
+                {/* <div className="container-checkbox">
                     <div className="mi-input-group checkbox">
                         <input id="envio" type="checkbox" name="envio" checked={producto.envio} onChange={
                             e => setProducto({ ...producto, envio: e.target.checked })
                         } />
                         <label htmlFor="envio">envío</label>
                     </div>
-                </div>
+                </div> */}
                 <button disabled={!formularioValido()} className={editarID ? "btnActualizar" : "btnAgregar"}>
                     {editarID ? 'Actualizar' : 'Agregar'}
                 </button>
@@ -318,15 +338,16 @@ export function Index() {
                             {/* <th>#</th> */}
                             <th>nombre</th>
                             <th>precio</th>
-                            <th>stock</th>
-                            <th>marca</th>
-                            <th>categoría</th>
-                            <th>descripcion corta</th>
-                            <th>descripcion larga</th>
-                            <th>edad desde</th>
-                            <th>edad hasta</th>
+                            {/* <th>stock</th> */}
+                            {/* <th>marca</th> */}
+                            {/* <th>categoría</th> */}
+                            <th>descripcion</th>
+                            {/* <th>descripcion corta</th> */}
+                            {/* <th>descripcion larga</th> */}
+                            {/* <th>edad desde</th> */}
+                            {/* <th>edad hasta</th> */}
                             <th>foto</th>
-                            <th>envío</th>
+                            {/* <th>envío</th> */}
                             <th>acciones</th>
                         </tr>
                     </thead>
@@ -337,15 +358,16 @@ export function Index() {
                                     {/* <td className="centrar">{producto.id}</td> */}
                                     <td>{producto.nombre}</td>
                                     <td className="centrar">${producto.precio}</td>
-                                    <td className="centrar">{producto.stock}</td>
-                                    <td>{producto.marca}</td>
-                                    <td>{producto.categoria}</td>
-                                    <td>{producto.descripcionCorta}</td>
-                                    <td>{producto.descripcionLarga}</td>
-                                    <td className="centrar">{producto.edadDesde}</td>
-                                    <td className="centrar">{producto.edadHasta}</td>
+                                    {/* <td className="centrar">{producto.stock}</td> */}
+                                    {/* <td>{producto.marca}</td> */}
+                                    {/* <td>{producto.categoria}</td> */}
+                                    {<td>{producto.descripcion}</td>}
+                                    {/* <td>{producto.descripcionCorta}</td> */}
+                                    {/* <td>{producto.descripcionLarga}</td> */}
+                                    {/* <td className="centrar">{producto.edadDesde}</td> */}
+                                    {/* <td className="centrar">{producto.edadHasta}</td> */}
                                     <td><img width="75" src={producto.foto} alt={"foto de " + producto.nombre + ' ' + producto.marca} /></td>
-                                    <td className="centrar">{producto.envio ? 'Si' : 'No'}</td>
+                                    {/* <td className="centrar">{producto.envio ? 'Si' : 'No'}</td> */}
                                     <td>
                                         {/* Botón borrar */}
                                         <button disabled={editarID ? true : false} className="borrar-editar" id={"btnBorrar-" + producto.id} onClick={
